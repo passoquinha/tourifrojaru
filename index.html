@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IFRO Campus Jaru 3D — Play & View</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-BcjB4qv_.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CVbOLGhd.css">
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <div class="logo-mark">
+        <div class="dot red"></div>
+        <div class="dot green"></div>
+        <div class="dot green"></div>
+        <div class="dot green"></div>
+      </div>
+      <h2>IFRO CAMPUS JARU 3D</h2>
+      <p id="loading-status">Carregando campus em low poly...</p>
+      <div class="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Top Bar -->
+  <header id="top-bar">
+    <div class="brand">
+      <div class="brand-badge">IFRO</div>
+      <div class="brand-text">
+        <span class="title">CAMPUS JARU</span>
+        <span class="sub">VIRTUAL 3D EXPERIENCE</span>
+      </div>
+    </div>
+
+    <!-- Mode Switcher -->
+    <div class="mode-switcher">
+      <button id="btn-mode-play" class="mode-btn active" title="Pilotar a Lambreta Elétrica">
+        <span class="icon">🛵</span>
+        <span class="label">JOGAR</span>
+      </button>
+      <button id="btn-mode-view" class="mode-btn" title="Navegação Livre / Inspeção">
+        <span class="icon">🌐</span>
+        <span class="label">NAVEGAR</span>
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <button id="btn-toggle-sound" class="action-btn" title="Alternar Som do Motor">
+        <span id="sound-icon">🔊</span>
+      </button>
+      <button id="btn-toggle-sun" class="action-btn" title="Alternar Iluminação Dia/Pôr do Sol">
+        <span>☀️</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PLAY MODE HUD -->
+  <div id="play-hud" class="hud-layer active">
+    <!-- Speedometer & Battery -->
+    <div class="cluster-gauge">
+      <div class="speed-readout">
+        <span id="speed-value">0</span>
+        <span class="unit">KM/H</span>
+      </div>
+      <div class="battery-bar-container" title="Bateria da Lambreta">
+        <span class="batt-icon">⚡</span>
+        <div class="batt-track">
+          <div id="batt-fill" style="width: 100%;"></div>
+        </div>
+        <span class="batt-pct">100%</span>
+      </div>
+    </div>
+
+    <!-- Controls Legend -->
+    <div class="controls-card">
+      <div class="card-header">CONTROLES DA LAMBRETA</div>
+      <div class="key-row"><kbd>W</kbd> / <kbd>▲</kbd> <span>Acelerar</span></div>
+      <div class="key-row"><kbd>S</kbd> / <kbd>▼</kbd> <span>Freio / Ré</span></div>
+      <div class="key-row"><kbd>A</kbd> <kbd>D</kbd> / <kbd>◄</kbd> <kbd>►</kbd> <span>Esterçar</span></div>
+      <div class="key-row"><kbd>Espaço</kbd> <span>Freio de Mão</span></div>
+      <div class="key-row"><kbd>C</kbd> <span>Câmera (Trás / Perto)</span></div>
+      <div class="key-row"><kbd>R</kbd> <span>Respawn na R. Tapajós</span></div>
+    </div>
+
+    <!-- Location Indicator -->
+    <div id="location-badge">
+      <span class="loc-icon">📍</span>
+      <span id="location-text">Rua Tapajós — Acesso Principal</span>
+    </div>
+
+    <!-- Mobile Touch Controls (shown on touch devices) -->
+    <div id="touch-controls">
+      <div id="touch-dpad">
+        <button id="btn-left" class="touch-btn">◄</button>
+        <button id="btn-right" class="touch-btn">►</button>
+      </div>
+      <div id="touch-pedals">
+        <button id="btn-brake" class="touch-btn brake">FREIO</button>
+        <button id="btn-gas" class="touch-btn gas">ACEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW MODE HUD -->
+  <div id="view-hud" class="hud-layer">
+    <!-- POI Quick Jump Menu -->
+    <div class="poi-menu">
+      <div class="poi-header">SELEÇÃO RÁPIDA DE SETORES</div>
+      <div class="poi-grid">
+        <button class="poi-btn" data-poi="entrada"><span class="num">1</span> Entrada / Portaria</button>
+        <button class="poi-btn" data-poi="biblioteca"><span class="num">2</span> Biblioteca</button>
+        <button class="poi-btn" data-poi="admin"><span class="num">3</span> Bloco Admin</button>
+        <button class="poi-btn" data-poi="blocoC"><span class="num">4</span> Bloco C</button>
+        <button class="poi-btn" data-poi="pavilhoes"><span class="num">5</span> Pavilhões A e B</button>
+        <button class="poi-btn" data-poi="pedagogico"><span class="num">6</span> Bloco Pedagógico</button>
+        <button class="poi-btn" data-poi="clinica"><span class="num">7</span> Clínica Veterinária</button>
+        <button class="poi-btn" data-poi="cit"><span class="num">8</span> Edifício 8 (CIT)</button>
+        <button class="poi-btn highlight" data-poi="top"><span class="num">🗺️</span> Vista Geral Topo</button>
+      </div>
+    </div>
+
+    <!-- POI Info Card -->
+    <div id="poi-card" class="poi-info-card hidden">
+      <button id="btn-close-poi" class="close-card">✕</button>
+      <h3 id="poi-title">Título do Setor</h3>
+      <p id="poi-desc">Descrição arquitetônica e funcional deste setor do campus.</p>
+    </div>
+  </div>
+
+</body>
+</html>
