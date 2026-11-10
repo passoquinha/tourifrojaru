@@ -109,6 +109,20 @@ Acesse no seu navegador: `http://localhost:8000`
 
 ---
 
+## ⚙️ Perfil econômico e R36S
+
+O perfil econômico é o padrão. Inspirado no agrupamento de objetos do `hide01`, ele agrupa as malhas estáticas do campus em lotes espaciais, mantendo os colisores originais; usa cores por vértice e material compartilhado, desativa sombras dinâmicas e antialiasing e limita a resolução 3D a 640×480, preservando a interface na resolução da tela. Materiais com texturas ou transparência não são agrupados. Reflexos e sombras diferem da versão original.
+
+Para usar a qualidade original, abra o endereço com `?quality=high` (por exemplo, `http://localhost:8000/?quality=high`). No perfil econômico, a resolução é ajustada novamente ao redimensionar a janela.
+
+Além do teclado e dos controles de toque, o modo jogar aceita controles compatíveis com a **Gamepad API**: direcional ou analógico para virar, A/R2 para acelerar, B/L2 para frear/ré, X para freio de mão, Y para câmera e Start para respawn. A numeração segue o mapeamento padrão de navegador; pode variar conforme o dispositivo. Navegação pelos menus ainda requer mouse ou toque.
+
+**Importante:** este projeto continua sendo uma aplicação Three.js/WebGL, não um executável Godot/Linux ARM. O R36S precisa de um navegador/runtime compatível com a versão de WebGL exigida pelo Three.js, suporte aos controles e forma de servir os arquivos locais. O perfil reduz o custo gráfico, mas desempenho, compatibilidade, FPS e autonomia precisam ser medidos no aparelho real; 20 GFLOPS por si só não garantem execução fluida.
+
+O repositório contém apenas o bundle JavaScript compilado, não os fontes originais do aplicativo. A integração do perfil está nesse bundle e o agrupamento fica em `assets/low-power.js`; uma reconstrução externa do bundle deve preservar essa integração.
+
+---
+
 ## 👥 Créditos e Realização
 
 * **Instituição:** [Instituto Federal de Educação, Ciência e Tecnologia de Rondônia (IFRO)](https://portal.ifro.edu.br/) — Campus Jaru
